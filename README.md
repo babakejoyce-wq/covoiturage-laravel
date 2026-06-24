@@ -1,66 +1,275 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+#  Covoiturage - Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Une application web de covoiturage local développée avec Laravel permettant aux conducteurs de proposer des trajets et aux passagers de consulter les trajets disponibles.
 
-## About Laravel
+## 📖 À propos du projet
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Cette application a été développée dans le cadre d'un projet académique visant à mettre en pratique les concepts fondamentaux de Laravel :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Authentification et autorisation
+- Relations entre modèles
+- Validation des formulaires
+- Gestion des fichiers et images
+- Sécurisation des routes
+- Architecture MVC
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+L'application facilite le partage de trajets quotidiens tout en favorisant la mobilité collaborative.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Fonctionnalités
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🔐 Authentification
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Inscription des utilisateurs
+- Connexion sécurisée
+- Déconnexion
+- Gestion du profil utilisateur
 
-## Laravel Sponsors
+### 👤 Gestion du profil
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Chaque utilisateur peut :
 
-### Premium Partners
+- Consulter son profil
+- Modifier son prénom
+- Modifier son nom
+- Modifier son numéro de téléphone
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 🚘 Gestion des véhicules
 
-## Contributing
+Chaque utilisateur peut enregistrer :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Une photo du véhicule
+- Le numéro de plaque
+- Une description complète
 
-## Code of Conduct
+Contraintes :
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Un seul véhicule par utilisateur
+- Le véhicule doit être enregistré avant la création d'un trajet
 
-## Security Vulnerabilities
+### 🛣️ Gestion des trajets
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Consultation publique
 
-## License
+Tous les visiteurs peuvent consulter :
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Ville de départ
+- Lieu de départ
+- Ville d'arrivée
+- Lieu d'arrivée
+- Date du trajet
+- Nombre de places disponibles
+- Informations du conducteur
+- Informations du véhicule
+
+#### Création de trajet
+
+Un utilisateur connecté peut :
+
+- Ajouter un trajet
+- Définir les villes de départ et d'arrivée
+- Définir les lieux précis
+- Choisir la date du trajet
+- Définir le nombre de places disponibles
+
+#### Gestion personnelle
+
+Chaque conducteur peut :
+
+- Voir ses trajets
+- Supprimer ses trajets
+
+---
+
+## 🛡️ Sécurité
+
+L'application implémente :
+
+- Authentification Laravel
+- Middleware de protection
+- Protection CSRF
+- Validation des données
+- Gestion sécurisée des uploads d'images
+- Contrôle d'accès basé sur le propriétaire des ressources
+
+---
+
+## 🏗️ Architecture du projet
+
+```text
+app/
+├── Models
+│   ├── User.php
+│   ├── Vehicule.php
+│   └── Trajet.php
+│
+├── Http/
+│   ├── Controllers/
+│   └── Middleware/
+
+database/
+├── migrations/
+
+resources/
+├── views/
+│   ├── auth/
+│   ├── profils/
+│   ├── vehicules/
+│   └── trajets/
+
+routes/
+├── web.php
+
+storage/
+└── app/public/
+```
+
+---
+
+## 🛠️ Technologies utilisées
+
+- Laravel
+- PHP 8+
+- MySQL
+- Blade
+- Bootstrap
+- HTML5
+- CSS3
+- JavaScript
+
+---
+
+## ⚙️ Installation
+
+### Cloner le dépôt
+
+```bash
+git clone https://github.com/votre-utilisateur/covoiturage-laravel.git
+```
+
+### Accéder au projet
+
+```bash
+cd covoiturage-laravel
+```
+
+### Installer les dépendances
+
+```bash
+composer install
+```
+
+### Copier le fichier d'environnement
+
+```bash
+cp .env.example .env
+```
+
+### Générer la clé d'application
+
+```bash
+php artisan key:generate
+```
+
+### Configurer la base de données
+
+Modifier le fichier `.env`
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=covoiturage
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Exécuter les migrations
+
+```bash
+php artisan migrate
+```
+
+### Créer le lien de stockage
+
+```bash
+php artisan storage:link
+```
+
+### Lancer le serveur
+
+```bash
+php artisan serve
+```
+
+Accès :
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## 🗃️ Base de données
+
+### Users
+
+| Champ | Type |
+|---------|---------|
+| id | bigint |
+| prenom | string |
+| nom | string |
+| telephone | string |
+| email | string |
+| password | string |
+
+### Vehicules
+
+| Champ | Type |
+|---------|---------|
+| id | bigint |
+| photo | string |
+| plaque | string |
+| description | text |
+| user_id | foreign key |
+
+### Trajets
+
+| Champ | Type |
+|---------|---------|
+| id | bigint |
+| ville_depart | string |
+| lieu_depart | text |
+| ville_arrivee | string |
+| lieu_arrivee | text |
+| date_trajet | datetime |
+| places_disponibles | integer |
+| user_id | foreign key |
+
+---
+
+
+##  Fonctionnalités bonus
+
+- Pagination des trajets
+- Recherche de trajets
+- Filtrage par ville
+- Filtrage par date
+- Image par défaut pour les véhicules
+
+---
+
+##  Auteur
+
+**Joyce Babake**
+
+Étudiante en Informatique | Développeuse Web
+
+GitHub : https://github.com/babakejoyce-wq
+
+---
+
+## 📄 Licence
+
+Projet académique développé dans le cadre d'un apprentissage du framework Laravel.
